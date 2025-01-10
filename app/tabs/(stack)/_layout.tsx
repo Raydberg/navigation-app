@@ -7,8 +7,6 @@ const screenItems = [
     { name: 'profile/index', title: 'Perfil' },
     { name: 'settings/index', title: 'Ajustes' },
 ]
-
-
 const StackLayout = () => {
     return (
         <Stack
@@ -17,7 +15,8 @@ const StackLayout = () => {
                 headerShadowVisible: false,
                 contentStyle: {
                     backgroundColor: 'white'
-                }
+                },
+                // headerShown: false
             }}
         >
             {
