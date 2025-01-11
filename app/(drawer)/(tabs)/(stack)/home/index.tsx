@@ -1,9 +1,15 @@
 import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 import CustomButton from '@/components/shared/CustomButton'
-import { Link, router } from 'expo-router'
+import { Link, router, useNavigation } from 'expo-router'
+import { DrawerActions } from '@react-navigation/native'
 
 const HomeScreen = () => {
+    const navigation = useNavigation()
+    const onToggleDrawer = () => {
+        //*Abrir el toggle
+        navigation.dispatch(DrawerActions.toggleDrawer)
+    }
     return (
         <SafeAreaView>
             <View className='px-10'>
@@ -12,7 +18,7 @@ const HomeScreen = () => {
                 <CustomButton
                     className='mb-10'
                     color='primary'
-                    onPress={() => router.push('/tabs/(stack)/products')}
+                    onPress={() => router.push('/products')}
                 >
                     Productos
                 </CustomButton>
@@ -20,19 +26,25 @@ const HomeScreen = () => {
                 <CustomButton
                     className='mb-10'
                     color='secondary'
-                    onPress={() => router.push('/tabs/(stack)/profile')}
+                    onPress={() => router.push('/profile')}
                 >
                     Profile
                 </CustomButton>
                 <CustomButton
                     className='mb-10'
                     color='tertiary'
-                    onPress={() => router.push('/tabs/(stack)/settings')}
+                    onPress={() => router.push('/settings')}
                 >
                     Ajustes
                 </CustomButton>
 
-                <Link href='/tabs/products' asChild>
+                <CustomButton
+                    onPress={onToggleDrawer}
+                >
+                    Abrir Menu
+                </CustomButton>
+
+                <Link href='/products' asChild>
                     <CustomButton
                         className='mb-10'
                         onPress={() => router.push('/')}

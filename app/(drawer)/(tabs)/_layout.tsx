@@ -8,7 +8,6 @@ export default function TabLayout() {
         <Tabs screenOptions=
             {{
                 tabBarActiveTintColor: 'indigo',
-                headerShown: false,
                 // tabBarStyle: {
                 //     backgroundColor: 'black'
                 // }
@@ -30,6 +29,7 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="(stack)"
                 options={{
+                    headerShown: false,
                     title: 'Stack',
                     tabBarIcon: ({ color }) => <Ionicons size={28} name="person-outline" color={color} />,
                 }}

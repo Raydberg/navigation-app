@@ -17,7 +17,7 @@ const ItemProduct = ({ id, title, description, price }: Props) => {
             <Text className=''>{description}</Text>
             <View className='flex flex-row justify-between mt-2'>
                 <Text className='font-work-black'>{price}</Text>
-                <Link href={`/tabs/(stack)/products/${id}`}>
+                <Link href={`/products/${id}`}>
                     Ver Detalles
                 </Link>
             </View>

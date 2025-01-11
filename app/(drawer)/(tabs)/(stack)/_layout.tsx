@@ -1,5 +1,8 @@
 import React from 'react'
-import { Stack } from 'expo-router'
+import { router, Stack, useNavigation } from 'expo-router'
+import { Pressable, Text } from 'react-native'
+import { DrawerActions, StackActions } from '@react-navigation/native'
+import { Ionicons } from '@expo/vector-icons'
 
 const screenItems = [
     { name: 'home/index', title: 'Home' },
@@ -8,6 +11,17 @@ const screenItems = [
     { name: 'settings/index', title: 'Ajustes' },
 ]
 const StackLayout = () => {
+
+    const navigation = useNavigation()
+
+    const onHeaderLeftClick = (canGoBack: boolean) => {
+        if (canGoBack) {
+            router.back()
+            return;
+        }
+        navigation.dispatch(DrawerActions.toggleDrawer())
+    }
+
     return (
         <Stack
             screenOptions={{
@@ -16,6 +30,14 @@ const StackLayout = () => {
                 contentStyle: {
                     backgroundColor: 'white'
                 },
+                headerLeft: ({ tintColor, canGoBack }) =>
+                (
+                    <Pressable onPressIn={() => onHeaderLeftClick(!!canGoBack)} >
+                        <Ionicons
+                            name={canGoBack ? 'arrow-back-outline' : 'grid-outline'}
+                            size={20} />
+                    </Pressable>
+                )
                 // headerShown: false
             }}
         >

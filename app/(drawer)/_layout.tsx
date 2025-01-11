@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+
 import React from 'react'
 import Drawer from 'expo-router/drawer'
 import { Ionicons } from '@expo/vector-icons'
@@ -11,6 +11,7 @@ const DrawerLayout = () => {
             drawerContent={CustomDrawer}
             //*Ignorara lo que sigue , reemplazar -> no se renderiza
             screenOptions={{
+                // headerShown: false,
                 //*Opacidad al momento de abrir
                 overlayColor: 'rgba(0,0,0,0.4)',
                 drawerActiveTintColor: 'indigo',
@@ -26,6 +27,17 @@ const DrawerLayout = () => {
                     title: 'Usuario',
                     drawerIcon: ({ color, size }) => (
                         <Ionicons name='person-circle-outline' size={size} color={color} />
+                    )
+                }}
+            />
+            <Drawer.Screen
+                name="(tabs)"
+                options={{
+                    headerShown: false,
+                    drawerLabel: 'Tabs + Stack',
+                    title: 'Tabs + Stack',
+                    drawerIcon: ({ color, size }) => (
+                        <Ionicons name='albums-outline' size={size} color={color} />
                     )
                 }}
             />
